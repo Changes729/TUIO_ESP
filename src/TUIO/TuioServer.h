@@ -1,17 +1,17 @@
 /*
  TUIO C++ Library
  Copyright (c) 2005-2017 Martin Kaltenbrunner <martin@tuio.org>
- 
+
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
  License as published by the Free Software Foundation; either
  version 3.0 of the License, or (at your option) any later version.
- 
+
  This library is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  Lesser General Public License for more details.
- 
+
  You should have received a copy of the GNU Lesser General Public
  License along with this library.
 */
@@ -23,7 +23,6 @@
 #include "UdpSender.h"
 #include "TcpSender.h"
 #include "WebSockSender.h"
-#include "FlashSender.h"
 #include <iostream>
 #include <vector>
 #include <stdio.h>
@@ -37,7 +36,7 @@ namespace TUIO {
 	/**
 	 * <p>The TuioServer class is the central TUIO protocol encoder component.
 	 * In order to encode and send TUIO messages an instance of TuioServer needs to be created. The TuioServer instance then generates TUIO messages
-	 * which are deliverered by the provided OSCSender. The shown UDPSender send OSC to UDP port 3333 on localhost or to the configured host and port.</p> 
+	 * which are deliverered by the provided OSCSender. The shown UDPSender send OSC to UDP port 3333 on localhost or to the configured host and port.</p>
 	 * <p>During runtime the each frame is marked with the initFrame and commitFrame methods,
 	 * while the currently present TuioObjects are managed by the server with ADD, UPDATE and REMOVE methods in analogy to the TuioClient's TuioListener interface.</p>
 	 *<p>See the SimpleSimulator example project for further hints on how to use the TuioServer class and its various methods.
@@ -71,11 +70,6 @@ namespace TUIO {
 	class LIBDECL TuioServer : public TuioManager {
 
 	public:
-
-		/**
-		 * This constructor creates a TuioServer that uses an internal UdpSender delivering the OSC data via UDP port 3333 on localhost
-		 */
-		TuioServer();
 
 		/**
 		 * This constructor creates a TuioServer that uses an internal UdpSender delivering the OSC data via the provided UDP port on the provided host
@@ -168,13 +162,6 @@ namespace TUIO {
 		 * Commits the current frame.
 		 * Generates and sends TUIO messages of all currently active and updated TuioObjects, TuioCursors and TuioBlobs.
 		 */
-
-		/**
-		 * Defines the name of this TUIO source, which is transmitted within the /tuio/[profile] source message.
-		 *
-		 * @param	name	the desired name of this TUIO source
-		 */
-		void setSourceName(const char *name);
 
 		/**
 		 * Defines the name and IP address of this TUIO source, which is transmitted within the /tuio/[profile] source message.
